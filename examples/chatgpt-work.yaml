@@ -1,0 +1,84 @@
+# One row per control: the OpenAI sentence, the page it came from, the equivalent
+# in a stack you own. check.py re-fetches each source and fails when a quote is gone.
+#
+# Only pages a plain HTTP client can read are listed here. Two of the three pages
+# the matrix cites (chatgpt.com/business/enterprise and
+# openai.com/index/introducing-chatgpt-enterprise) answer a non-browser client
+# with HTTP 403, so their rows are marked `manual: true` in the matrix and are
+# not re-checked by this script. Read them in a browser and update the date.
+checked: 2026-10-21
+sources:
+  overview: https://learn.chatgpt.com/docs/enterprise/chatgpt-work-overview
+  enterprise: https://chatgpt.com/business/enterprise/
+  announcement: https://openai.com/index/introducing-chatgpt-enterprise/
+
+rows:
+  - control: Cloud execution
+    source: overview
+    quote: >-
+      Cloud execution runs supported steps on OpenAI-managed infrastructure.
+    kortix: One isolated sandbox per session, its own machine and branch
+    kortix_docs: https://kortix.com/docs/work/sessions
+
+  - control: Outbound destinations
+    source: overview
+    quote: >-
+      Turning it off limits code and shell commands to required destinations on the managed allowlist
+    kortix: No outbound allowlist documented; a secret can be egress-enforced
+    kortix_docs: https://kortix.com/docs/project/secrets
+
+  - control: Approval before an action
+    source: overview
+    quote: >-
+      Not every app supports the same action controls, and not every action requires an individual human confirmation.
+    kortix: Approval gates you set. Off until you set them.
+    kortix_docs: https://kortix.com/docs/connect/connectors#policies-and-approvals
+
+  - control: Which policy wins
+    source: overview
+    quote: >-
+      MDM and legacy managed-device requirements rank above Agent Security.
+    kortix: Project rules first, then connector rules; first match wins
+    kortix_docs: https://kortix.com/docs/project/manifest#policy-and-policies
+
+  - control: Hooks
+    source: overview
+    quote: >-
+      Local computer access with Work Cloud supports admin-defined MCP hooks
+    kortix: Every connector call is checked by policy, then recorded
+    kortix_docs: https://kortix.com/docs/connect/connectors
+
+  - control: Complete execution history
+    source: overview
+    quote: >-
+      These user-visible records don’t establish Compliance API export or a complete administrator-visible execution history.
+    kortix: One row per API request, and an agent row names the person it acted for
+    kortix_docs: https://kortix.com/docs/accounts#audit-log
+
+  - control: Compliance record retention
+    source: overview
+    quote: >-
+      Compliance Logs Platform records: Remain available in the platform for 30 days.
+    kortix: 0 to 90 days live, 90 to 365 in a locked archive
+    kortix_docs: https://kortix.com/docs/accounts#retention-and-export
+
+  - control: Data residency
+    source: overview
+    quote: >-
+      Data residency and inference residency cover only eligible content and supported workloads, regions, and configurations.
+    kortix: The self-hosted stack keeps the API, database and files on your server
+    kortix_docs: https://kortix.com/docs/host
+
+  - control: Zero data retention on a connected computer
+    source: overview
+    quote: >-
+      Local computer access with Work Cloud does not provide strict zero data retention.
+    kortix: Zero data retention at the model provider; a runtime secret is a real value in the session
+    kortix_docs: https://kortix.com/docs/project/models
+
+  - control: Local execution boundary
+    source: overview
+    quote: >-
+      A task cannot switch from local execution to the cloud during a turn.
+    kortix: One session, one sandbox, one branch; work lands through a change request
+    kortix_docs: https://kortix.com/docs/work/sessions
