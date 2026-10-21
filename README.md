@@ -23,7 +23,7 @@ held       Approval before an action -> https://learn.chatgpt.com/docs/enterpris
 
 A tick-box grid is a claim about a product with no evidence attached. A sentence copied from the vendor's page is evidence with a URL, and it has one property a tick does not: it can stop being true, and you can find out. When a vendor renames a control, narrows a limit or drops a claim, the sentence changes and the check fails on that row alone. The row then names the page to re-read.
 
-The same reasoning decides what belongs in your own stack: a control you cannot point at a page for is a control you cannot put in a review. [How a stack you own answers the ChatGPT Work control set](https://chatgptworkalternative.com/chatgpt-work-for-enterprise) is one worked example, and [the method, walked through](https://kortix.com/blog/chatgpt-work-enterprise-controls-recheck) is the longer version.
+The same reasoning decides what belongs in your own stack: a control you cannot point at a page for is a control you cannot put in a review. [How a stack you own answers the ChatGPT Work control set](https://chatgptworkalternative.com) is one worked example, and [the method, walked through](https://kortix.com/blog/chatgpt-work-enterprise-controls-recheck) is the longer version.
 
 ## The rows file
 
